@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>יקיר ❤️ רומי</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Rubik:wght@400;700;900&family=Dancing+Script:wght@700&display=swap');
+</style>
+<style>
+  /* fallback fonts if offline */
+  body { font-family: 'Heebo', 'Arial Hebrew', 'David', Arial, sans-serif; }
+</style>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --slide-duration: 0.7s;
+  }
+
+  html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    font-family: 'Heebo', sans-serif;
+  }
+
+  /* ===== PRESENTATION WRAPPER ===== */
+  #presentation {
+    width: 100vw; height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ===== SLIDES ===== */
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+  }
+  .slide.active {
+    display: flex;
+  }
+
+  /* ===== SLIDE 0 — INTRO ===== */
+  #s0 {
+    background: #0a0010;
+    overflow: hidden;
+  }
+  #s0::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, #6e00ff44, transparent 70%),
+                radial-gradient(ellipse at 20% 30%, #ff006644, transparent 50%);
+    animation: pulse 4s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes pulse { from { opacity: .6; } to { opacity: 1; } }
+
+  #s0 .stars {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, #fff, transparent),
+      radial-gradient(1px 1px at 30% 60%, #fff9, transparent),
+      radial-gradient(1.5px 1.5px at 55% 25%, #fff, transparent),
+      radial-gradient(1px 1px at 80% 70%, #fffb, transparent),
+      radial-gradient(1px 1px at 65% 85%, #fff8, transparent),
+      radial-gradient(2px 2px at 20% 80%, #fffc, transparent),
+      radial-gradient(1px 1px at 90% 20%, #fff, transparent),
+      radial-gradient(1px 1px at 40% 40%, #fff7, transparent),
+      radial-gradient(1.5px 1.5px at 70% 50%, #fff, transparent),
+      radial-gradient(1px 1px at 15% 55%, #fffa, transparent);
+  }
+
+  #s0 .badge {
+    font-size: clamp(11px, 1.5vw, 14px);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #ff66aa;
+    margin-bottom: 16px;
+    position: relative;
+    animation: fadeUp 1s ease both;
+  }
+  #s0 h1 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 900;
+    font-size: clamp(52px, 10vw, 120px);
+    line-height: 1;
+    color: #fff;
+    position: relative;
+    animation: fadeUp 1s .2s ease both;
+  }
+  #s0 h1 .heart-inline {
+    color: #ff3366;
+    display: inline-block;
+    animation: heartBeat 1.2s .8s ease-in-out infinite;
+  }
+  @keyframes heartBeat {
+    0%,100% { transform: scale(1); }
+    14% { transform: scale(1.3); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.2); }
+    70% { transform: scale(1); }
+  }
+  #s0 .subtitle {
+    margin-top: 20px;
+    font-size: clamp(16px, 2.5vw, 24px);
+    color: #cc99ff;
+    font-weight: 300;
+    position: relative;
+    animation: fadeUp 1s .4s ease both;
+  }
+  #s0 .cta {
+    margin-top: 40px;
+    padding: 14px 40px;
+    border: 2px solid #ff3366;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    background: transparent;
+    font-family: 'Heebo', sans-serif;
+    transition: all .3s;
+    position: relative;
+    animation: fadeUp 1s .6s ease both;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 10;
+  }
+  #s0 .cta:hover { background: #ff3366; transform: scale(1.05); }
+
+  /* ===== SLIDE 1 — WHO IS YAKIR ===== */
+  #s1 {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  }
+  #s1 .avatar {
+    width: clamp(120px, 18vw, 180px);
+    height: clamp(120px, 18vw, 180px);
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: clamp(50px, 8vw, 80px);
+    margin-bottom: 24px;
+    box-shadow: 0 0 60px #667eea88;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  #s1 h2 {
+    font-family: 'Rubik', sans-serif;
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  #s1 .role-badge {
+    display: inline-block;
+    background: #667eea22;
+    border: 1px solid #667eea;
+    color: #a9b7ff;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+  #s1 .facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    max-width: 700px;
+  }
+  #s1 .fact {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 16px;
+    padding: 14px 20px;
+    font-size: clamp(14px, 1.8vw, 17px);
+    color: #dde;
+    backdrop-filter: blur(10px);
+    transition: transform .2s;
+  }
+  #s1 .fact:hover { transform: scale(1.05); }
+  #s1 .fact .icon { font-size: 22px; margin-left: 8px; }
+
+  /* ===== SLIDE 2 — WHO IS ROMI ===== */
+  #s2 {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffecd2 100%);
+  }
+  #s2 h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(40px, 7vw, 90px);
+    color: #8b1a4a;
+    margin-bottom: 8px;
+  }
+  #s2 .crown { font-size: 50px; animation: spin 3s linear infinite; display: block; }
+  @keyframes spin { from{transform:rotate(-10deg);} 50%{transform:rotate(10deg);} to{transform:rotate(-10deg);} }
+  #s2 .qualities {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    max-width: 600px;
+    margin-top: 24px;
+  }
+  #s2 .quality {
+    background: rgba(255,255,255,.55);
+    border-radius: 20px;
+    padding: 16px 18px;
+    font-size: clamp(13px, 1.7vw, 16px);
+    color: #5a1030;
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(255,100,150,.15);
+  }
+  #s2 .quality span { display: block; font-size: 26px; margin-bottom: 6px; }
+  #s2 .warning {
+    margin-top: 20px;
+    background: #fff3;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-size: 14px;
+    color: #8b1a4a;
+    font-style: italic;
+  }
+
+  /* ===== SLIDE 3 — THE MOMENT ===== */
+  #s3 {
+    background: #0d0d0d;
+    overflow: hidden;
+  }
+  #s3::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 50%, #ff336622 0%, transparent 60%);
+    animation: throb 2s ease infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes throb { from{transform:scale(1);} to{transform:scale(1.2);} }
+  #s3 .moment-emoji { font-size: clamp(60px, 10vw, 110px); animation: heartBeat 1s ease-in-out infinite; position: relative; }
+  #s3 h2 {
+    font-family: 'Rubik', sans-serif;
+    font-size: clamp(28px, 4.5vw, 58px);
+    font-weight: 900;
+    color: #fff;
+    position: relative;
+    margin: 16px 0 10px;
+  }
+  #s3 h2 em { color: #ff3366; font-style: normal; }
+  #s3 .cinematic {
+    position: relative;
+    max-width: 680px;
+    font-size: clamp(15px, 2vw, 20px);
+    color: #ccc;
+    line-height: 1.8;
+    background: #ffffff08;
+    border-right: 4px solid #ff3366;
+    padding: 20px 24px;
+    border-radius: 0 12px 12px 0;
+    text-align: right;
+    margin-top: 16px;
+  }
+  #s3 .time-stamp {
+    font-size: 12px;
+    color: #ff336688;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  /* ===== SLIDE 4 — PANIC ===== */
+  #s4 {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+    overflow: hidden;
+  }
+  #s4 h2 {
+    font-family: 'Rubik', sans-serif;
+    font-size: clamp(30px, 5vw, 64px);
+    font-weight: 900;
+    color: #1a0a00;
+    margin-bottom: 24px;
+  }
+  #s4 .thoughts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 640px;
+    width: 100%;
+  }
+  #s4 .thought {
+    background: rgba(255,255,255,.35);
+    border-radius: 18px 18px 4px 18px;
+    padding: 14px 20px;
+    font-size: clamp(14px, 1.8vw, 18px);
+    color: #1a0a00;
+    text-align: right;
+    box-shadow: 0 4px 20px rgba(0,0,0,.1);
+    animation: wiggle .3s ease-in-out infinite alternate;
+  }
+  #s4 .thought:nth-child(2) { animation-delay: .1s; }
+  #s4 .thought:nth-child(3) { animation-delay: .2s; }
+  #s4 .thought:nth-child(4) { animation-delay: .05s; }
+  @keyframes wiggle {
+    from { transform: rotate(-.5deg); }
+    to { transform: rotate(.5deg); }
+  }
+  #s4 .panic-meter {
+    margin-top: 24px;
+    width: 100%;
+    max-width: 500px;
+    background: rgba(0,0,0,.15);
+    border-radius: 30px;
+    height: 24px;
+    overflow: hidden;
+  }
+  #s4 .panic-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff6b35, #ff0000);
+    border-radius: 30px;
+    transition: width 2s .3s ease;
+    display: flex; align-items: center; justify-content: flex-end;
+    padding-right: 10px;
+    font-size: 11px;
+    color: #fff;
+    font-weight: 700;
+  }
+  .slide.active #s4 .panic-fill,
+  #s4.fill-active .panic-fill { width: 97%; }
+  #s4 .panic-label {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #1a0a00aa;
+    font-weight: 700;
+  }
+
+  /* ===== SLIDE 5 — FAILED ATTEMPTS ===== */
+  #s5 {
+    background: linear-gradient(180deg, #1d1d2e 0%, #2c2c4a 100%);
+    overflow-y: auto;
+  }
+  #s5 h2 {
+    font-family: 'Rubik', sans-serif;
+    font-size: clamp(26px, 4vw, 52px);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 24px;
+  }
+  #s5 h2 .red { color: #ff4444; }
+  #s5 .attempts {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 660px;
+    width: 100%;
+  }
+  #s5 .attempt {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+    padding: 16px 20px;
+    text-align: right;
+  }
+  #s5 .attempt .num {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: #ff4444;
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900;
+    font-size: 16px;
+  }
+  #s5 .attempt .desc {
+    flex: 1;
+  }
+  #s5 .attempt .title {
+    font-weight: 700;
+    font-size: clamp(14px, 1.8vw, 17px);
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  #s5 .attempt .result {
+    font-size: clamp(12px, 1.5vw, 14px);
+    color: #ff7777;
+  }
+  #s5 .attempt .emoji-result { font-size: 22px; flex-shrink: 0; }
+
+  /* ===== SLIDE 6 — THE PLAN ===== */
+  #s6 {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    overflow: hidden;
+  }
+  #s6::before {
+    content: '★';
+    position: absolute;
+    font-size: 400px;
+    color: rgba(255,255,255,.02);
+    top: -80px; left: -80px;
+    animation: slowRotate 20s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes slowRotate { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+  #s6 h2 {
+    font-family: 'Rubik', sans-serif;
+    font-size: clamp(28px, 4.5vw, 58px);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  #s6 .tagline {
+    color: #a78bfa;
+    font-size: clamp(14px, 1.8vw, 18px);
+    margin-bottom: 28px;
+    position: relative;
+  }
+  #s6 .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 620px;
+    width: 100%;
+    position: relative;
+  }
+  #s6 .step {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(167,139,250,.1);
+    border: 1px solid rgba(167,139,250,.25);
+    border-radius: 14px;
+    padding: 14px 20px;
+    text-align: right;
+    transition: transform .2s;
+  }
+  #s6 .step:hover { transform: scale(1.02); }
+  #s6 .step .step-icon { font-size: 28px; flex-shrink: 0; }
+  #s6 .step .step-text {
+    flex: 1;
+    font-size: clamp(13px, 1.7vw, 16px);
+    color: #e2d9f3;
+  }
+  #s6 .step .step-text strong { color: #c4b5fd; display: block; font-size: 1.1em; }
+  #s6 .classified {
+    margin-top: 16px;
+    font-size: 12px;
+    color: #a78bfa66;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  /* ===== SLIDE 7 — DECLARATION ===== */
+  #s7 {
+    background: radial-gradient(ellipse at 50% 50%, #1a0010, #000);
+    overflow: hidden;
+  }
+  #s7 .confetti-container {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .confetti-piece {
+    position: absolute;
+    top: -20px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    animation: confettiFall linear infinite;
+  }
+  @keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+  #s7 .big-hearts {
+    font-size: clamp(40px, 6vw, 70px);
+    animation: heartBeat 1s ease-in-out infinite;
+    position: relative;
+  }
+  #s7 h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(36px, 6vw, 80px);
+    color: #fff;
+    position: relative;
+    margin: 16px 0 12px;
+    line-height: 1.2;
+  }
+  #s7 h2 .gold { color: #ffd700; }
+  #s7 .letter {
+    max-width: 620px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,215,0,.2);
+    border-radius: 20px;
+    padding: 24px 32px;
+    font-size: clamp(14px, 1.8vw, 18px);
+    color: #f0d0e0;
+    line-height: 2;
+    text-align: right;
+    position: relative;
+  }
+  #s7 .letter::before {
+    content: '❝';
+    position: absolute;
+    top: -20px; right: 20px;
+    font-size: 60px;
+    color: #ffd70044;
+    font-family: serif;
+  }
+  #s7 .signature {
+    margin-top: 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(22px, 3vw, 36px);
+    color: #ff9999;
+    position: relative;
+  }
+  #s7 .final-hearts {
+    margin-top: 16px;
+    font-size: 28px;
+    animation: heartBeat 1.2s ease-in-out infinite;
+    position: relative;
+  }
+
+  /* ===== NAVIGATION ===== */
+  #nav {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 100;
+    background: rgba(0,0,0,.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 50px;
+    padding: 12px 24px;
+  }
+  #nav button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: all .2s;
+    font-family: 'Heebo', sans-serif;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  #nav button:hover { background: rgba(255,255,255,.15); transform: scale(1.1); }
+  #nav button:disabled { opacity: .25; cursor: not-allowed; }
+  #nav .dots {
+    display: flex; gap: 8px;
+  }
+  #nav .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.3);
+    cursor: pointer;
+    transition: all .3s;
+  }
+  #nav .dot.active {
+    background: #ff3366;
+    width: 24px;
+    border-radius: 4px;
+  }
+  #nav .counter {
+    font-size: 13px;
+    color: rgba(255,255,255,.5);
+    min-width: 40px;
+    text-align: center;
+  }
+
+  /* ===== SHARED ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* stagger children of active slide */
+  .slide.active > * {
+    animation: fadeUp .6s ease both;
+  }
+  .slide.active > *:nth-child(1) { animation-delay: .0s; }
+  .slide.active > *:nth-child(2) { animation-delay: .12s; }
+  .slide.active > *:nth-child(3) { animation-delay: .24s; }
+  .slide.active > *:nth-child(4) { animation-delay: .36s; }
+  .slide.active > *:nth-child(5) { animation-delay: .48s; }
+  .slide.active > *:nth-child(6) { animation-delay: .60s; }
+
+  /* slide title chip */
+  .slide-chip {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: .55;
+    padding: 4px 14px;
+    border-radius: 20px;
+    border: 1px solid currentColor;
+    margin-bottom: 14px;
+  }
+</style>
+</head>
+<body>
+
+<div id="presentation">
+
+  <!-- ===== SLIDE 0: INTRO ===== -->
+  <div class="slide active" id="s0">
+    <div class="stars"></div>
+    <div class="badge">🎬 הסיפור הגדול של השנה</div>
+    <h1>יקיר <span class="heart-inline">❤️</span> רומי</h1>
+    <div class="subtitle">סיפור אהבה • דרמה • קומדיה • ומעט בלבול</div>
+    <button class="cta" id="ctaBtn">▶ פתחו את הסיפור</button>
+  </div>
+
+  <!-- ===== SLIDE 1: WHO IS YAKIR ===== -->
+  <div class="slide" id="s1">
+    <div class="slide-chip" style="color:#a9b7ff">פרק א'</div>
+    <div class="avatar">🧔</div>
+    <h2>יקיר מהדורי</h2>
+    <div class="role-badge">גיבור הסיפור • אדם מקסים • מעט מבולבל</div>
+    <div class="facts">
+      <div class="fact"><span class="icon">💻</span> הכי חכם בחדר (לפחות לדעתו)</div>
+      <div class="fact"><span class="icon">😎</span> קול כמו ג'ורג' קלוני, ביטחון עצמי כמו פינגווין</div>
+      <div class="fact"><span class="icon">🍕</span> מסוגל לאכול פיצה בכל שעה ביום או בלילה</div>
+      <div class="fact"><span class="icon">🎵</span> שר במקלחת — ביצועים ברמה בינלאומית</div>
+      <div class="fact"><span class="icon">💪</span> התחיל חדר כושר פעמיים. שלוש. אולי ארבע</div>
+      <div class="fact"><span class="icon">❤️</span> לב ענק שחיפש את רומי</div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 2: WHO IS ROMI ===== -->
+  <div class="slide" id="s2">
+    <div class="slide-chip" style="color:#8b1a4a">פרק ב'</div>
+    <span class="crown">👑</span>
+    <h2>רומי</h2>
+    <div class="qualities">
+      <div class="quality"><span>✨</span>מקסימה ומדהימה</div>
+      <div class="quality"><span>🌺</span>חיוך שמאיר חדרים</div>
+      <div class="quality"><span>🧠</span>חכמה להפליא</div>
+      <div class="quality"><span>😂</span>צחוק מדבק</div>
+    </div>
+    <div class="warning">⚠️ אזהרה: צפייה ישירה עלולה לגרום לבלבול, הצמדות לטלפון, וחיוכים מוסברים</div>
+  </div>
+
+  <!-- ===== SLIDE 3: THE MOMENT ===== -->
+  <div class="slide" id="s3">
+    <div class="slide-chip" style="color:#ff3366">פרק ג'</div>
+    <div class="moment-emoji">💥</div>
+    <h2>הרגע <em>שזה</em> קרה</h2>
+    <div class="cinematic">
+      <div class="time-stamp">📍 יום רגיל לחלוטין • שעה אקראית • מקום לא מתוכנן</div>
+      יקיר הסתובב כמו רגיל, חשב על פיצה, ואז —<br>
+      <strong style="color:#ff9999">רומי.</strong><br>
+      הזמן עצר. המוזיקה התחילה לנגן מאיפשהו.<br>
+      יקיר ניסה להיראות טבעי.<br>
+      <em style="color:#ff6699">הוא לא הצליח.</em>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 4: PANIC ===== -->
+  <div class="slide" id="s4">
+    <div class="slide-chip" style="color:#1a0a00">פרק ד'</div>
+    <h2>🧠 מה שקרה בראש של יקיר</h2>
+    <div class="thoughts">
+      <div class="thought">💭 "אני נראה בסדר, נכון? נכון?? מישהו??"</div>
+      <div class="thought">💭 "אולי אגיד שלום. לא, זה מוזר. אולי שלומך. לא, גם זה מוזר."</div>
+      <div class="thought">💭 "אני צריך להיות עכשיו גרסה מאוד משופרת של עצמי, בדחיפות."</div>
+      <div class="thought">💭 "היא בטח לא שמה לב. היא שמה לב. היא לא שמה לב. 😰"</div>
+    </div>
+    <div class="panic-meter">
+      <div class="panic-fill" id="panicFill">97% פאניקה</div>
+    </div>
+    <div class="panic-label">מד פאניקה פנימי</div>
+  </div>
+
+  <!-- ===== SLIDE 5: FAILED ATTEMPTS ===== -->
+  <div class="slide" id="s5">
+    <div class="slide-chip" style="color:#fff8">פרק ה'</div>
+    <h2>הניסיונות ה<span class="red">אמיצים</span></h2>
+    <div class="attempts">
+      <div class="attempt">
+        <div class="num">1</div>
+        <div class="desc">
+          <div class="title">ניסיון החיוך המסתורי</div>
+          <div class="result">❌ יצא כמו מישהו שאכל לימון. ניסיון נוסף נדרש.</div>
+        </div>
+        <div class="emoji-result">😬</div>
+      </div>
+      <div class="attempt">
+        <div class="num">2</div>
+        <div class="desc">
+          <div class="title">ניסיון ה"אני עוסק בדברים מעניינים"</div>
+          <div class="result">❌ שיחה על מזג אוויר. מרתקת. ממש.</div>
+        </div>
+        <div class="emoji-result">🌧️</div>
+      </div>
+      <div class="attempt">
+        <div class="num">3</div>
+        <div class="desc">
+          <div class="title">ניסיון ה"אני עובד על עצמי"</div>
+          <div class="result">❌ הלך לחדר כושר פעם אחת. סינגל זה לא אלבום.</div>
+        </div>
+        <div class="emoji-result">🏋️</div>
+      </div>
+      <div class="attempt">
+        <div class="num">4</div>
+        <div class="desc">
+          <div class="title">ניסיון "אשלח הודעה ענקית שנכתבה 40 דקות"</div>
+          <div class="result">❌ נשלחה "היי". סתם "היי".</div>
+        </div>
+        <div class="emoji-result">😶</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 6: THE PLAN ===== -->
+  <div class="slide" id="s6">
+    <div class="slide-chip" style="color:#c4b5fd">פרק ו'</div>
+    <h2>🗺️ התוכנית הגדולה</h2>
+    <div class="tagline">מסווג ביותר • גרסה 7.3 • לאחר 6 עריכות</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">🧘</div>
+        <div class="step-text"><strong>שלב א׳ — להירגע</strong>נשימה עמוקה. אפשר לעשות את זה. כנראה.</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">💬</div>
+        <div class="step-text"><strong>שלב ב׳ — שיחה אמיתית</strong>לא על מזג אוויר. משהו מעניין. שיחה שהיא תזכור.</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">😂</div>
+        <div class="step-text"><strong>שלב ג׳ — להצחיק אותה</strong>יש לו כישרון. לפחות הוא צוחק לבד לבדיחות שלו.</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">🌹</div>
+        <div class="step-text"><strong>שלב ד׳ — להיות ישיר</strong>לאמץ את האמת: רומי, את מדהימה וטעות לא לנסות.</div>
+      </div>
+    </div>
+    <div class="classified">🔒 מסווג — לא לשיתוף ברדיוס של 50 מטר מרומי</div>
+  </div>
+
+  <!-- ===== SLIDE 7: DECLARATION ===== -->
+  <div class="slide" id="s7">
+    <div class="confetti-container" id="confetti"></div>
+    <div class="big-hearts">💖💫💖</div>
+    <h2>רומי, <span class="gold">את מיוחדת.</span></h2>
+    <div class="letter">
+      יקיר לא ממש יודע מה הוא עושה ברוב הפעמים.<br>
+      אבל הוא יודע דבר אחד בוודאות:<br><br>
+      <strong style="color:#ffd700">כשהוא רואה אותך — הכל פתאום הגיוני.</strong><br><br>
+      אז אם תתני לו סיכוי קטן,<br>
+      הוא מבטיח לא לדבר על מזג אוויר,<br>
+      ללכת לחדר כושר לפחות פעמיים,<br>
+      ולחייך בלי להיראות כמו שאכל לימון. 🍋
+    </div>
+    <div class="signature">— יקיר מהדורי, בענווה ✍️</div>
+    <div class="final-hearts">❤️ 🌹 ❤️</div>
+  </div>
+
+</div><!-- /presentation -->
+
+<!-- NAVIGATION -->
+<div id="nav">
+  <button id="prevBtn" disabled>→</button>
+  <div class="dots" id="dots"></div>
+  <span class="counter" id="counter">1 / 8</span>
+  <button id="nextBtn">←</button>
+</div>
+
+<script>
+const TOTAL = 8;
+let current = 0;
+
+function goTo(idx) {
+  if (idx < 0 || idx >= TOTAL) return;
+  document.querySelectorAll('.slide')[current].classList.remove('active');
+  current = idx;
+  document.querySelectorAll('.slide')[current].classList.add('active');
+  document.getElementById('prevBtn').disabled = current === 0;
+  document.getElementById('nextBtn').disabled = current === TOTAL - 1;
+  document.getElementById('counter').textContent = (current + 1) + ' / ' + TOTAL;
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  if (idx === 4) { setTimeout(() => { const f = document.getElementById('panicFill'); if(f) f.style.width='97%'; }, 300); }
+  if (idx === 7) spawnConfetti();
+}
+
+// כפתורים
+document.getElementById('ctaBtn').addEventListener('click', () => goTo(1));
+document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+
+// נקודות ניווט
+const dotsEl = document.getElementById('dots');
+for (let i = 0; i < TOTAL; i++) {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.style.cursor = 'pointer';
+  d.addEventListener('click', (function(n){ return () => goTo(n); })(i));
+  dotsEl.appendChild(d);
+}
+
+// מקלדת
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') goTo(current + 1);
+  if (e.key === 'ArrowRight') goTo(current - 1);
+});
+
+// החלקה
+let tx = 0, ty = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, {passive:true});
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  const dy = e.changedTouches[0].clientY - ty;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) { dx < 0 ? goTo(current+1) : goTo(current-1); }
+}, {passive:true});
+
+// Confetti
+function spawnConfetti() {
+  const container = document.getElementById('confetti');
+  container.innerHTML = '';
+  const colors = ['#ff3366','#ffd700','#a78bfa','#ff9a9e','#00d2ff','#43e97b','#f093fb'];
+  for (let i = 0; i < 80; i++) {
+    const p = document.createElement('div');
+    p.className = 'confetti-piece';
+    p.style.cssText = `
+      left: ${Math.random() * 100}%;
+      width: ${6 + Math.random() * 8}px;
+      height: ${6 + Math.random() * 8}px;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      border-radius: ${Math.random() > .5 ? '50%' : '2px'};
+      animation-duration: ${2 + Math.random() * 3}s;
+      animation-delay: ${Math.random() * 2}s;
+    `;
+    container.appendChild(p);
+  }
+}
+</script>
+</body>
+</html>
