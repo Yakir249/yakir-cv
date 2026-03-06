@@ -853,6 +853,41 @@
   }
 
   /* ======================== TRAINING ======================== */
+  .training-toggle {
+    margin-top: 1.2rem;
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.95rem;
+    padding: 0.5rem 1.4rem;
+    border-radius: 30px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+  }
+  .training-toggle:hover {
+    background: rgba(201,168,76,0.1);
+  }
+  .toggle-arrow {
+    display: inline-block;
+    transition: transform 0.3s;
+    font-size: 0.75rem;
+  }
+  .training-toggle[aria-expanded="true"] .toggle-arrow {
+    transform: rotate(180deg);
+  }
+  .training-collapse {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s ease;
+  }
+  .training-collapse.open {
+    max-height: 800px;
+  }
+
   .training-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -1565,7 +1600,7 @@
           style="width: 100%; display: block; background: #000;"
           preload="metadata"
         >
-          <source src="https://github.com/Yakir249/yakir-cv/releases/download/untagged-83bc146c569a9940ba44/video.mp4" type="video/mp4">
+          <source src="https://github.com/Yakir249/yakir-cv/releases/download/v1.0/video.mp4" type="video/mp4">
         </video>
       </div>
     </div>
@@ -1581,7 +1616,11 @@
     <div class="section-divider"></div>
     <h2 class="section-title">הסמכות <span>ויכולות</span></h2>
     <p class="section-subtitle">הכשרות מקצועיות שנרכשו במהלך שנות שירות בצבא ובמשמר הגבול.</p>
+    <button class="training-toggle" onclick="toggleTraining(this)" aria-expanded="false">
+      <span class="toggle-label">הצג הסמכות</span> <span class="toggle-arrow">▼</span>
+    </button>
   </div>
+  <div class="training-collapse" id="trainingCollapse">
   <div class="training-grid">
     <div class="training-item reveal reveal-delay-1">
       <div class="training-icon">&#127807;</div>
@@ -1623,6 +1662,7 @@
       <div class="training-icon">&#128202;</div>
       <div class="training-name">קורס ימ"ס — הכשרה מלאה</div>
     </div>
+  </div>
   </div>
 </section>
 
@@ -1812,6 +1852,14 @@
   document.querySelectorAll('.reveal, .reveal-left').forEach(el => {
     observer.observe(el);
   });
+
+  // Training toggle
+  function toggleTraining(btn) {
+    const collapse = document.getElementById('trainingCollapse');
+    const isOpen = collapse.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
+    btn.querySelector('.toggle-label').textContent = isOpen ? 'הסתר הסמכות' : 'הצג הסמכות';
+  }
 
   // Smooth nav scroll + active state
   document.querySelectorAll('a[href^="#"]').forEach(link => {
